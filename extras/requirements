@@ -1,1 +1,6 @@
-nitrogen xcompmgr dunst sxhkd xsct brillo
+nitrogen https://github.com/l3ib/nitrogen.git
+xcompmgr https://github.com/freedesktop/xcompmgr.git
+dunst https://github.com/dunst-project/dunst.git
+sxhkd https://github.com/baskerville/sxhkd.git
+xsct https://github.com/X11-good-tools/xsct.git
+brillo https://github.com/CameronNemo/brillo.git
