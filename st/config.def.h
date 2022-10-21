@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Hack:pixelsize=16:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -102,21 +102,21 @@ static const char *colorname[] = {
         "#000000", /* black */
         "#cc00cc", /* purple */
         "#ac00e6", /* purple2 */
+        "#1aa3ff", /* blue */
         "#00ffff", /* aqua */
-        "#009999", /* dark-cyan */
         "#ff00ff", /* pink */
-        "#9966ff", /* light-blue */
-        "#ff0000", /* red */
+        "#0099ff", /* blue2 */
+        "#00ffff", /* aqua */
 
         /* 8 bright colors */
-        "#ac00e6", /* purple3 */
-        "#cc00cc", /* purple */
-        "#ac00e6", /* purple2 */
-        "#00ffff", /* aqua */
-        "#ac00e6", /* purple3 */
-        "#ff00ff", /* pink */
-        "#9966ff", /* light-blue */
-        "#00ffff", /* aqua */
+        "#66ffff", /* light aqua */
+        "#ff66ff", /* light purple */
+        "#d966ff", /* light purple2 */
+        "#66c2ff", /* light blue */
+        "#66ffff", /* light aqua */
+        "#ff66ff", /* light pink */
+        "#66c2ff", /* light blue2 */
+        "#66ffff", /* light aqua */
 
 	[255] = 0,
 
