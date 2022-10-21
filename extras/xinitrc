@@ -3,13 +3,13 @@
 #xrandr --setprovideroutputsource modesetting NVIDIA-0
 #xrandr --auto
 
+#xsnow -delay 30 -snowflakes 200 -ssnowdepth 100 -wsnowdepth 30 -norudolf -nosanta -notrees &
+#xsnow -delay 30 -snowflakes 200 -nokeepsnowonwindows -nokeepsnowonscreen -norudolf -nosanta -notrees &
+
 xsct 2000 &
 sxhkd &
 nitrogen --restore &
 slstatus &
 picom --shadow --shadow-radius 13 --shadow-opacity 0.69 --shadow-color "#000000" --fading --vsync &
 pulseaudio --start &
-pcloud &
-#xsnow -delay 30 -snowflakes 200 -ssnowdepth 100 -wsnowdepth 30 -norudolf -nosanta -notrees &
-#xsnow -delay 30 -snowflakes 200 -nokeepsnowonwindows -nokeepsnowonscreen -norudolf -nosanta -notrees &
 exec dbus-run-session dwm
