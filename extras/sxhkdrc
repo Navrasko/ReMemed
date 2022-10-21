@@ -1,0 +1,16 @@
+
+
+super + Page_Up
+  brillo -q -A 5
+
+super + Page_Down
+  brillo -q -U 5
+
+super + b
+  setxkbmap br
+
+super + n
+  setxkbmap us
+
+Print
+  flameshot gui
