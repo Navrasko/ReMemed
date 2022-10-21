@@ -1,0 +1,15 @@
+#!/bin/bash
+
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+
+xsct 2000 &
+sxhkd &
+nitrogen --restore &
+slstatus &
+picom &
+pulseaudio --start &
+pcloud &
+#xsnow -delay 30 -snowflakes 200 -ssnowdepth 100 -wsnowdepth 30 -norudolf -nosanta -notrees &
+#xsnow -delay 30 -snowflakes 200 -nokeepsnowonwindows -nokeepsnowonscreen -norudolf -nosanta -notrees &
+exec dbus-run-session dwm
