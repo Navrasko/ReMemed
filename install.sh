@@ -27,7 +27,7 @@ if [[ ! -d "$SRCDIR/extras" ]]; then
 	echo "run the script inside it's folder." && exit
 	fi
 
-#checking if dunst's folder doesn't exist, and applying the config.
+#creating the folder if it doesn't exist, and applying the config.
 if [[ ! -d "$DUNST" ]]; then
         sudo mkdir $DUNST && sudo cp $SRCDIR/extras/dunstrc $DUNST
 else
