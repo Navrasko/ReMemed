@@ -1,9 +1,8 @@
 #!/bin/bash
 
-echo "Wich distro are you using?
-      1)Void
-      2)Arch\n
-      ---> "
+echo "Wich distro are you using? 
+1)Void	2)Arch"
+
 
 read manager
 
@@ -85,19 +84,56 @@ else
 	sudo cp $SRCDIR/extras/themes/settings.ini $GTK3
 fi
 
+#Compiling some good stuff.
+#Some of these are unneeded right now. But they might come in handy IF i start experimenting with some other distros.
+mkdir $SRCDIR/builds
+
+NITROGEN_GIT="https://github.com/l3ib/nitrogen.git"
+PICOM_GIT="https://github.com/yshui/picom.git"
+DUNST_GIT="https://github.com/dunst-project/dunst.git" 	#As a developer. You can put these types of crappy messages anywere. It's so nice. 
+SXHKD_GIT="https://github.com/baskerville/sxhkd.git"
+XSCT_GIT="https://github.com/X11-good-tools/xsct.git"
+BRILLO_GIT="https://github.com/CameronNemo/brillo.git"
+FLAMESHOT_GIT="https://github.com/flameshot-org/flameshot.git"
+
+cd $SRCDIR/builds
+
+case $DISTRO in
+	1)
+		git clone $XSCT_GIT && cd xsct && sudo make install
+		;;
+	2)
+		git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && sudo make install && cd $SRCDIR/builds/brillo && sudo make install 
+		;;
+esac
+
 #Compiling dwm, and it's gremlins + applying xinit's config.
 cd $SRCDIR/dwm && sudo make install &&
 cd $SRCDIR/slstatus && sudo make install &&
 cd $SRCDIR/dmenu && sudo make install &&
 cd $SRCDIR/st && sudo make install &&
-cp $SRCDIR/extras/xinirc $HOME/.xinitrc
+cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd $HOME
+
 
 #Final steps.
-echo "Everything done."
-echo "Do you wish to download all of wine's dependencies? (This is mainly for gaming.(You need to enable multilib.))"
-echo "1)Yes
-      2)No\n
-      -->  "
+echo "Would you like to install Oh my bash? (It's the bash shell, but it's more responsive and nicer to use.)"
+echo "1)Yes 2)No"
+
+read omb
+
+case $omb in
+	1)
+		bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
+		;;
+	2)
+		echo "Perhaps you should."
+		;;
+esac 				#Perhaps you REALLY should.
+
+
+#Gayming
+echo "Would tou like to download all of wine's dependencies? (This is mainly for gaming.(You need to enable multilib.))"
+echo "1)Yes 2)No"
 
 read end
 if [[ $end == 2 ]] then
@@ -111,4 +147,4 @@ else
 	echo "something went wrong. perhaps you should check your internet connection"
 fi
 
-echo "all done."
+echo "all done." #Ok, but when is despacito 2 going to release?
