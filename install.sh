@@ -62,7 +62,7 @@ GTK3=/etc/gtk-3.0
 if [[ ! -d "$THEMES" || ! -d "$THEMES/Default" ]]; then
 	sudo mkdir $THEMES && sudo mkdir $THEMES/Default && sudo cp -r $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp -r $SRCDIR/extras/themes/index.theme $THEMES/Default
 else
-	sudo cp -R $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp -r $SRCDIR/extras/themes/index.theme $THEMES/Default
+	sudo cp -r $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp $SRCDIR/extras/themes/index.theme $THEMES/Default
 fi
 
 #Same as above, but these are icons instead of themes. 
@@ -98,24 +98,41 @@ FLAMESHOT_GIT="https://github.com/flameshot-org/flameshot.git"
 
 cd $SRCDIR/builds
 
-case $DISTRO in
-	1)
-		git clone $XSCT_GIT && cd xsct && sudo make install
-		;;
-	2)
-		git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && sudo make install && cd $SRCDIR/builds/brillo && sudo make install 
-		;;
-esac
+if [[ $DISTRO == 1 ]]; then
+	git clone $XSCT_GIT && cd xsct && sudo make install && sudo mv xsct /usr/local/bin
+
+elif [[ $DISTRO == 2 ]]; then
+	git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && sudo make install && sudo mv xsct /usr/local/bin && cd ../brillo && sudo make install
+fi
+	
 
 #Compiling dwm, and it's gremlins + applying xinit's config.
 cd $SRCDIR/dwm && sudo make install &&
 cd $SRCDIR/slstatus && sudo make install &&
 cd $SRCDIR/dmenu && sudo make install &&
 cd $SRCDIR/st && sudo make install &&
-cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd $HOME
+mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd $HOME
 
 
 #Final steps.
+#Gayming.
+echo "Would tou like to download all of wine's dependencies? (This is mainly for gaming.(You need to enable multilib.))"
+echo "1)Yes 2)No"
+
+read end
+if [[ $end == 2 ]] then
+	echo "Skipping...." #Skipping DEZNUTZ
+
+elif [[ $end == 1 && $DISTRO == 1 ]] then
+	bash $SRCDIR/extras/GOOWDH-Void
+
+elif [[ $end == 1 && $DISTRO == 2 ]] then
+	bash $SRCDIR/extras/GOOWDH-Arch
+else
+	echo "something went wrong. perhaps you should check your internet connection"
+fi
+
+
 echo "Would you like to install Oh my bash? (It's the bash shell, but it's more responsive and nicer to use.)"
 echo "1)Yes 2)No"
 
@@ -130,21 +147,4 @@ case $omb in
 		;;
 esac 				#Perhaps you REALLY should.
 
-
-#Gayming
-echo "Would tou like to download all of wine's dependencies? (This is mainly for gaming.(You need to enable multilib.))"
-echo "1)Yes 2)No"
-
-read end
-if [[ $end == 2 ]] then
-	exit && echo "all done." #Ok, but when is despacito 2 going to release?
-elif [[ $end == 1 && $DISTRO == 1 ]] then
-	bash $SRCDIR/extras/GOOWDH-Void
-
-elif [[ $end == 1 && $DISTRO == 2 ]] then
-	bash $SRCDIR/extras/GOOWDH-Arch
-else
-	echo "something went wrong. perhaps you should check your internet connection"
-fi
-
-echo "all done." #Ok, but SERIOUSLY, WHEN is despacito 2 going to RELEASE?
+echo "all done." #Ok, but when is despacito 2 going to release?
