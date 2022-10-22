@@ -137,7 +137,7 @@ echo "1)Yes 2)No"
 
 read end
 if [[ $end == 2 ]] then
-	exit
+	exit && echo "all done." #Ok, but when is despacito 2 going to release?
 elif [[ $end == 1 && $DISTRO == 1 ]] then
 	bash $SRCDIR/extras/GOOWDH-Void
 
@@ -147,4 +147,4 @@ else
 	echo "something went wrong. perhaps you should check your internet connection"
 fi
 
-echo "all done." #Ok, but when is despacito 2 going to release?
+echo "all done." #Ok, but SERIOUSLY, WHEN is despacito 2 going to RELEASE?
