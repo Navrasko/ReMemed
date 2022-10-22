@@ -75,7 +75,7 @@ if [[ ! -d "$GTK2" ]]; then
 	sudo mkdir $GTK2 && sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
 else
 	sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
-fi
+fi    #Have you ever noticed that programmers are people who are just really good at grammar? Like. Pro... Grammar... Get it?
 
 #Same as above, but it's gtk3.
 if [[ ! -d "$GTK3" ]]; then
@@ -90,7 +90,7 @@ mkdir $SRCDIR/builds
 
 NITROGEN_GIT="https://github.com/l3ib/nitrogen.git"
 PICOM_GIT="https://github.com/yshui/picom.git"
-DUNST_GIT="https://github.com/dunst-project/dunst.git" 	#As a developer. You can put these types of crappy messages anywere. It's so nice. 
+DUNST_GIT="https://github.com/dunst-project/dunst.git" 	#As a programmer. You can put these types of crappy messages anywere. It's soo nice. 
 SXHKD_GIT="https://github.com/baskerville/sxhkd.git"
 XSCT_GIT="https://github.com/X11-good-tools/xsct.git"
 BRILLO_GIT="https://github.com/CameronNemo/brillo.git"
@@ -99,10 +99,10 @@ FLAMESHOT_GIT="https://github.com/flameshot-org/flameshot.git"
 cd $SRCDIR/builds
 
 if [[ $DISTRO == 1 ]]; then
-	git clone $XSCT_GIT && cd xsct && sudo make install && sudo mv xsct /usr/local/bin
+	git clone $XSCT_GIT && cd xsct && sudo make install
 
 elif [[ $DISTRO == 2 ]]; then
-	git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && sudo make install && sudo mv xsct /usr/local/bin && cd ../brillo && sudo make install
+	git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && sudo make install && cd ../brillo && sudo make install
 fi
 	
 
