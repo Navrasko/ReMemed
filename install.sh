@@ -132,16 +132,19 @@ fi
 
 #Compiling dwm, and it's gremlins.
 echo "
-Compiling dwm, slstatus, dmenu and st."
+Compiling dwm, slstatus, dmenu and st.
+
+"
 cd $SRCDIR/dwm && sudo make install &&
 cd $SRCDIR/slstatus && sudo make install &&
 cd $SRCDIR/dmenu && sudo make install &&
 cd $SRCDIR/st && sudo make install &&
 
 #Checking if .xinitrc exists. If it does, then it renames it, and applies it's config. 
-echo "Applying xinit's configuration."
+echo "
+Applying xinit's configuration."
 if [[ -f "$HOME/.xinitrc" ]]; then
-	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
+	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinitrc $HOME/.xinitrc && cd
 else
 	cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
 fi
@@ -156,7 +159,8 @@ echo "1)Yes 2)No"
 
 read end
 if [[ $end == 2 ]]; then
-	echo "Skipping...." #Skipping DEZNUTZ
+	echo "
+	Skipping...." #Skipping DEZNUTZ
 
 elif [[ $end == 1 && $DISTRO == 1 ]]; then
 	bash $SRCDIR/extras/GOOWDH-Void
@@ -184,4 +188,5 @@ case $omb in
 		;;
 esac 				#Perhaps you REALLY should.
 
-echo "all done." #Ok, but when is despacito 2 going to release?
+echo "
+all done." #Ok, but when is despacito 2 going to release?
