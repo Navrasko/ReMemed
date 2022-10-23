@@ -120,13 +120,13 @@ echo "Would tou like to download all of wine's dependencies? (This is mainly for
 echo "1)Yes 2)No"
 
 read end
-if [[ $end == 2 ]] then
+if [[ $end == 2 ]]; then
 	echo "Skipping...." #Skipping DEZNUTZ
 
-elif [[ $end == 1 && $DISTRO == 1 ]] then
+elif [[ $end == 1 && $DISTRO == 1 ]]; then
 	bash $SRCDIR/extras/GOOWDH-Void
 
-elif [[ $end == 1 && $DISTRO == 2 ]] then
+elif [[ $end == 1 && $DISTRO == 2 ]]; then
 	bash $SRCDIR/extras/GOOWDH-Arch
 else
 	echo "something went wrong. perhaps you should check your internet connection"
