@@ -132,7 +132,7 @@ else
 	echo "something went wrong. perhaps you should check your internet connection"
 fi
 
-
+#"Oh my bash"... the conumdrum... of life.
 echo "Would you like to install Oh my bash? (It's the bash shell, but it's more responsive and nicer to use.)"
 echo "1)Yes 2)No"
 
