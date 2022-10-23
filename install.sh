@@ -1,18 +1,17 @@
 #!/bin/bash
-DISTRO=
 
 echo "Wich distro are you using? 
 1)Void	2)Arch"
 
-read manager
+read DISTRO 
 
 #Installing dependencies.
-case $manager in
+case $DISTRO in
 	1)
-		DISTRO=1 sudo xbps-install -S sxhkd picom yt-dlp dunst nitrogen flameshot brillo make cmake gcc xorg-minimal libXft-devel libXcursor-devel libXrandr-devel libXinerama-devel libXfont-devel libXfont2-devel pkg-config glava font-awesome6 font-hack-ttf void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree gtk+ gtk+3 git wget
+		sudo xbps-install -S sxhkd picom yt-dlp dunst nitrogen flameshot brillo make cmake gcc xorg-minimal libXft-devel libXcursor-devel libXrandr-devel libXinerama-devel libXfont-devel libXfont2-devel pkg-config glava font-awesome6 font-hack-ttf void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree gtk+ gtk+3 git wget
 		;;
 	2)
-		DISTRO=2 sudo pacman -Sy --needed sxhkd picom yt-dlp dunst nitrogen flameshot make cmake gcc xorg pkgconf glava ttf-hack ttf-font-awesome gtk2 gtk3 git wget
+		sudo pacman -Sy --needed sxhkd picom yt-dlp dunst nitrogen flameshot make cmake gcc xorg pkgconf glava ttf-hack ttf-font-awesome gtk2 gtk3 git wget
 		;;
 esac
 
@@ -20,7 +19,7 @@ esac
 SRCDIR="$(pwd)"
 
 DUNST=/etc/dunst
-SXHKD=/home/$USER/.config/sxhkd
+SXHKD=$HOME/.config/sxhkd
 GLAVA=/etc/xdg/glava
 
 #Checking for your skill issues. 
@@ -135,7 +134,9 @@ else
 fi
 
 #"Oh my bash"... the conumdrum... of life.
-echo "Would you like to install Oh my bash? (It's the bash shell, but it's more responsive and nicer to use.)"
+echo "
+
+Would you like to install Oh my bash? (It's the bash shell, but it's more responsive and nicer to use.)"
 echo "1)Yes 2)No"
 
 read omb
