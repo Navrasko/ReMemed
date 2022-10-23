@@ -15,7 +15,9 @@ case $DISTRO in
 		;;
 esac
 
-#applying the custom configs.
+echo "
+
+applying the custom configurations."
 SRCDIR="$(pwd)"
 
 DUNST=/etc/dunst
@@ -27,7 +29,9 @@ if [[ ! -d "$SRCDIR/extras" ]]; then
 	echo "run the script inside it's folder." && exit
 fi
 
-#Creating dunst's config folder if it doesn't exist. And applying the config.
+#Creating dunst's config folder if it doesn't exist. And applying it's configuration.
+echo "
+Applying dunst's configuration."
 if [[ ! -d "$DUNST" ]]; then
         sudo mkdir $DUNST && sudo cp $SRCDIR/extras/dunstrc $DUNST
 else
@@ -35,6 +39,8 @@ else
 fi
 
 #Same as above, but it's sxhkd.
+echo "
+Applying sxhkd's configuration."
 if [[ ! -d "$SXHKD" ]]; then
 	mkdir $SXHKD && cp $SRCDIR/extras/sxhkdrc $SXHKD
 else
@@ -42,6 +48,8 @@ else
 fi
 
 #Same as above, but it's glava.
+echo "
+Applying glava's configuration."
 if [[ ! -d "$GLAVA" ]]; then
 	sudo mkdir $GLAVA && sudo cp -r $SRCDIR/extras/glava $GLAVA
 else
@@ -49,6 +57,8 @@ else
 fi
 
 #Copying yt-dlp's config to /etc.
+echo "
+Applying yt-dlp's configuration."
 sudo cp $SRCDIR/extras/yt-dlp.conf /etc
 
 #appying the themes.
@@ -58,6 +68,8 @@ GTK2=/etc/gtk-2.0
 GTK3=/etc/gtk-3.0
 
 #Creating the themes folder if it doesn't exist. And applying the themes.
+echo "
+Applying themes."
 if [[ ! -d "$THEMES" || ! -d "$THEMES/Default" ]]; then
 	sudo mkdir $THEMES && sudo mkdir $THEMES/Default && sudo cp -r $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp -r $SRCDIR/extras/themes/index.theme $THEMES/Default
 else
@@ -65,11 +77,15 @@ else
 fi
 
 #Same as above, but these are icons instead of themes. 
+echo "
+Applying icons"
 if [[ ! -d "$ICONS" ]]; then
 	sudo mkdir $ICONS && sudo cp -r $SRCDIR/extras/themes/MB-Plum-Suru-GLOW $ICONS && sudo cp -r $SRCDIR/extras/themes/Sweet-cursors $ICONS
 fi
 
-#Creating the gtk2 config folder if it doesn't exist. And applying the config.
+#Creating the gtk2 configuration folder if it doesn't exist. And applying it's configuration.
+echo "
+Applying gtk2's configuration."
 if [[ ! -d "$GTK2" ]]; then
 	sudo mkdir $GTK2 && sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
 else
@@ -77,6 +93,8 @@ else
 fi    #Have you ever noticed that programmers are people who are just really good at grammar? Like. Pro... Grammar... Get it?
 
 #Same as above, but it's gtk3.
+echo "
+Applying gtk3's configuration."
 if [[ ! -d "$GTK3" ]]; then
 	sudo mkdir $GTK3 && sudo cp $SRCDIR/extras/themes/settings.ini $GTK3
 else
@@ -85,6 +103,9 @@ fi
 
 #Compiling some good stuff.
 #Some of these are unneeded right now. But they might come in handy IF i start experimenting with some other distros.
+echo "
+Preparing git repositories.
+"
 mkdir $SRCDIR/builds
 
 NITROGEN_GIT=https://github.com/l3ib/nitrogen.git
@@ -98,19 +119,27 @@ FLAMESHOT_GIT=https://github.com/flameshot-org/flameshot.git
 cd $SRCDIR/builds
 
 if [[ $DISTRO == 1 ]]; then
-	git clone $XSCT_GIT && cd xsct && sudo make install
+	git clone $XSCT_GIT && cd xsct && echo "Compiling xsct." && sudo make install
 
 elif [[ $DISTRO == 2 ]]; then
-	git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && sudo make install && cd ../brillo && sudo make install
+	git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && echo "Compiling xsct." && sudo make install && cd ../brillo && echo "Compiling brillo." && sudo make install
 fi
 	
 
-#Compiling dwm, and it's gremlins + applying xinit's config.
+#Compiling dwm, and it's gremlins.
+echo "
+Compiling dwm, slstatus, dmenu and st."
 cd $SRCDIR/dwm && sudo make install &&
 cd $SRCDIR/slstatus && sudo make install &&
 cd $SRCDIR/dmenu && sudo make install &&
 cd $SRCDIR/st && sudo make install &&
-mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd $HOME
+
+#Checking if .xinitrc exists. If it does, then it renames it, and applies it's config. 
+if [[ -f "$HOME/.xinitrc" ]]; then
+	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
+else
+	cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
+fi
 
 
 #Final steps.
@@ -129,11 +158,9 @@ elif [[ $end == 1 && $DISTRO == 1 ]]; then
 
 elif [[ $end == 1 && $DISTRO == 2 ]]; then
 	bash $SRCDIR/extras/GOOWDH-Arch
-else
-	echo "something went wrong. perhaps you should check your internet connection"
 fi
 
-#"Oh my bash"... the conumdrum... of life.
+#"Oh my bash"... The conumdrum... Of life.
 echo "
 
 Would you like to install Oh my bash? (It's the bash shell, but it's more responsive and nicer to use.)"
