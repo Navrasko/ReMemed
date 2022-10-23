@@ -17,7 +17,7 @@ esac
 
 echo "
 
-applying the custom configurations."
+applying the custom configurations." && sleep 0.2
 SRCDIR="$(pwd)"
 
 DUNST=/etc/dunst
@@ -26,7 +26,8 @@ GLAVA=/etc/xdg/glava
 
 #Checking for your skill issues. 
 if [[ ! -d "$SRCDIR/extras" ]]; then
-	echo "run the script inside it's folder." && exit
+	echo "
+	run the script inside it's folder." && exit
 fi
 
 #Creating dunst's config folder if it doesn't exist. And applying it's configuration.
@@ -36,7 +37,7 @@ if [[ ! -d "$DUNST" ]]; then
         sudo mkdir $DUNST && sudo cp $SRCDIR/extras/dunstrc $DUNST
 else
 	sudo cp $SRCDIR/extras/dunstrc $DUNST
-fi
+fi sleep 0.2
 
 #Same as above, but it's sxhkd.
 echo "
@@ -45,7 +46,7 @@ if [[ ! -d "$SXHKD" ]]; then
 	mkdir $SXHKD && cp $SRCDIR/extras/sxhkdrc $SXHKD
 else
 	cp $SRCDIR/extras/sxhkdrc $DUNST
-fi
+fi sleep 0.2
 
 #Same as above, but it's glava.
 echo "
@@ -54,12 +55,12 @@ if [[ ! -d "$GLAVA" ]]; then
 	sudo mkdir $GLAVA && sudo cp -r $SRCDIR/extras/glava $GLAVA
 else
 	sudo cp -r $SRCDIR/extras/glava $GLAVA
-fi
+fi sleep 0.2
 
 #Copying yt-dlp's config to /etc.
 echo "
-Applying yt-dlp's configuration."
-sudo cp $SRCDIR/extras/yt-dlp.conf /etc
+Applying yt-dlp's configuration." 
+sudo cp $SRCDIR/extras/yt-dlp.conf /etc sleep 0.2
 
 #appying the themes.
 THEMES=/usr/share/themes
@@ -74,14 +75,14 @@ if [[ ! -d "$THEMES" || ! -d "$THEMES/Default" ]]; then
 	sudo mkdir $THEMES && sudo mkdir $THEMES/Default && sudo cp -r $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp -r $SRCDIR/extras/themes/index.theme $THEMES/Default
 else
 	sudo cp -r $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp $SRCDIR/extras/themes/index.theme $THEMES/Default
-fi
+fi sleep 0.2
 
 #Same as above, but these are icons instead of themes. 
 echo "
 Applying icons"
 if [[ ! -d "$ICONS" ]]; then
 	sudo mkdir $ICONS && sudo cp -r $SRCDIR/extras/themes/MB-Plum-Suru-GLOW $ICONS && sudo cp -r $SRCDIR/extras/themes/Sweet-cursors $ICONS
-fi
+fi sleep 0.2
 
 #Creating the gtk2 configuration folder if it doesn't exist. And applying it's configuration.
 echo "
@@ -90,7 +91,7 @@ if [[ ! -d "$GTK2" ]]; then
 	sudo mkdir $GTK2 && sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
 else
 	sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
-fi    #Have you ever noticed that programmers are people who are just really good at grammar? Like. Pro... Grammar... Get it?
+fi sleep 0.2 #Have you ever noticed that programmers are people who are just really good at grammar? Like. Pro... Grammar... Get it?
 
 #Same as above, but it's gtk3.
 echo "
@@ -99,13 +100,13 @@ if [[ ! -d "$GTK3" ]]; then
 	sudo mkdir $GTK3 && sudo cp $SRCDIR/extras/themes/settings.ini $GTK3
 else
 	sudo cp $SRCDIR/extras/themes/settings.ini $GTK3
-fi
+fi sleep 0.2
 
 #Compiling some good stuff.
 #Some of these are unneeded right now. But they might come in handy IF i start experimenting with some other distros.
 echo "
 Preparing git repositories.
-"
+" 			&& sleep 0.2
 mkdir $SRCDIR/builds
 
 NITROGEN_GIT=https://github.com/l3ib/nitrogen.git
@@ -119,27 +120,31 @@ FLAMESHOT_GIT=https://github.com/flameshot-org/flameshot.git
 cd $SRCDIR/builds
 
 if [[ $DISTRO == 1 ]]; then
-	git clone $XSCT_GIT && cd xsct && echo "Compiling xsct." && sudo make install
+	git clone $XSCT_GIT && cd xsct && echo "
+	Compiling xsct." && sudo make install
 
 elif [[ $DISTRO == 2 ]]; then
-	git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && echo "Compiling xsct." && sudo make install && cd ../brillo && echo "Compiling brillo." && sudo make install
-fi
+	git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && echo "
+	Compiling xsct." && sudo make install && cd ../brillo && echo "
+	Compiling brillo." && sudo make install
+fi sleep 0.2
 	
 
 #Compiling dwm, and it's gremlins.
 echo "
-Compiling dwm, slstatus, dmenu and st."
+Compiling dwm, slstatus, dmenu and st." && sleep  0.2
 cd $SRCDIR/dwm && sudo make install &&
 cd $SRCDIR/slstatus && sudo make install &&
 cd $SRCDIR/dmenu && sudo make install &&
 cd $SRCDIR/st && sudo make install &&
 
 #Checking if .xinitrc exists. If it does, then it renames it, and applies it's config. 
+echo "Applying xinit's configuration."
 if [[ -f "$HOME/.xinitrc" ]]; then
 	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
 else
 	cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
-fi
+fi sleep 0.2
 
 
 #Final steps.
@@ -173,7 +178,9 @@ case $omb in
 		bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
 		;;
 	2)
-		echo "Perhaps you should."
+		echo "
+		Perhaps you should.
+		"
 		;;
 esac 				#Perhaps you REALLY should.
 
