@@ -17,7 +17,7 @@ esac
 
 echo "
 
-applying the custom configurations." && sleep 0.2
+applying the custom configurations."
 SRCDIR="$(pwd)"
 
 DUNST=/etc/dunst
@@ -37,7 +37,7 @@ if [[ ! -d "$DUNST" ]]; then
         sudo mkdir $DUNST && sudo cp $SRCDIR/extras/dunstrc $DUNST
 else
 	sudo cp $SRCDIR/extras/dunstrc $DUNST
-fi sleep 0.2
+fi
 
 #Same as above, but it's sxhkd.
 echo "
@@ -46,7 +46,7 @@ if [[ ! -d "$SXHKD" ]]; then
 	mkdir $SXHKD && cp $SRCDIR/extras/sxhkdrc $SXHKD
 else
 	cp $SRCDIR/extras/sxhkdrc $DUNST
-fi sleep 0.2
+fi
 
 #Same as above, but it's glava.
 echo "
@@ -55,12 +55,12 @@ if [[ ! -d "$GLAVA" ]]; then
 	sudo mkdir $GLAVA && sudo cp -r $SRCDIR/extras/glava $GLAVA
 else
 	sudo cp -r $SRCDIR/extras/glava $GLAVA
-fi sleep 0.2
+fi
 
 #Copying yt-dlp's config to /etc.
 echo "
 Applying yt-dlp's configuration." 
-sudo cp $SRCDIR/extras/yt-dlp.conf /etc sleep 0.2
+sudo cp $SRCDIR/extras/yt-dlp.conf /etc
 
 #appying the themes.
 THEMES=/usr/share/themes
@@ -75,14 +75,14 @@ if [[ ! -d "$THEMES" || ! -d "$THEMES/Default" ]]; then
 	sudo mkdir $THEMES && sudo mkdir $THEMES/Default && sudo cp -r $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp -r $SRCDIR/extras/themes/index.theme $THEMES/Default
 else
 	sudo cp -r $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp $SRCDIR/extras/themes/index.theme $THEMES/Default
-fi sleep 0.2
+fi
 
 #Same as above, but these are icons instead of themes. 
 echo "
 Applying icons"
 if [[ ! -d "$ICONS" ]]; then
 	sudo mkdir $ICONS && sudo cp -r $SRCDIR/extras/themes/MB-Plum-Suru-GLOW $ICONS && sudo cp -r $SRCDIR/extras/themes/Sweet-cursors $ICONS
-fi sleep 0.2
+fi
 
 #Creating the gtk2 configuration folder if it doesn't exist. And applying it's configuration.
 echo "
@@ -91,7 +91,7 @@ if [[ ! -d "$GTK2" ]]; then
 	sudo mkdir $GTK2 && sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
 else
 	sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
-fi sleep 0.2 #Have you ever noticed that programmers are people who are just really good at grammar? Like. Pro... Grammar... Get it?
+fi 	#Have you ever noticed that programmers are people who are just really good at grammar? Like. Pro... Grammar... Get it?
 
 #Same as above, but it's gtk3.
 echo "
@@ -100,13 +100,13 @@ if [[ ! -d "$GTK3" ]]; then
 	sudo mkdir $GTK3 && sudo cp $SRCDIR/extras/themes/settings.ini $GTK3
 else
 	sudo cp $SRCDIR/extras/themes/settings.ini $GTK3
-fi sleep 0.2
+fi
 
 #Compiling some good stuff.
 #Some of these are unneeded right now. But they might come in handy IF i start experimenting with some other distros.
 echo "
 Preparing git repositories.
-" 			&& sleep 0.2
+"
 mkdir $SRCDIR/builds
 
 NITROGEN_GIT=https://github.com/l3ib/nitrogen.git
@@ -127,12 +127,12 @@ elif [[ $DISTRO == 2 ]]; then
 	git clone $XSCT_GIT && git clone $BRILLO_GIT && cd xsct && echo "
 	Compiling xsct." && sudo make install && cd ../brillo && echo "
 	Compiling brillo." && sudo make install
-fi sleep 0.2
+fi
 	
 
 #Compiling dwm, and it's gremlins.
 echo "
-Compiling dwm, slstatus, dmenu and st." && sleep  0.2
+Compiling dwm, slstatus, dmenu and st."
 cd $SRCDIR/dwm && sudo make install &&
 cd $SRCDIR/slstatus && sudo make install &&
 cd $SRCDIR/dmenu && sudo make install &&
@@ -144,7 +144,7 @@ if [[ -f "$HOME/.xinitrc" ]]; then
 	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
 else
 	cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
-fi sleep 0.2
+fi
 
 
 #Final steps.
