@@ -1,8 +1,8 @@
 #!/bin/bash
+DISTRO=
 
 echo "Wich distro are you using? 
 1)Void	2)Arch"
-
 
 read manager
 
@@ -88,13 +88,13 @@ fi
 #Some of these are unneeded right now. But they might come in handy IF i start experimenting with some other distros.
 mkdir $SRCDIR/builds
 
-NITROGEN_GIT="https://github.com/l3ib/nitrogen.git"
-PICOM_GIT="https://github.com/yshui/picom.git"
-DUNST_GIT="https://github.com/dunst-project/dunst.git" 	#As a programmer. You can put these types of crappy messages anywere. It's soo nice. 
-SXHKD_GIT="https://github.com/baskerville/sxhkd.git"
-XSCT_GIT="https://github.com/X11-good-tools/xsct.git"
-BRILLO_GIT="https://github.com/CameronNemo/brillo.git"
-FLAMESHOT_GIT="https://github.com/flameshot-org/flameshot.git"
+NITROGEN_GIT=https://github.com/l3ib/nitrogen.git
+PICOM_GIT=https://github.com/yshui/picom.git
+DUNST_GIT=https://github.com/dunst-project/dunst.git 	#As a programmer. You can put these types of crappy messages anywere. It's soo nice. 
+SXHKD_GIT=https://github.com/baskerville/sxhkd.git
+XSCT_GIT=https://github.com/X11-good-tools/xsct.git
+BRILLO_GIT=https://github.com/CameronNemo/brillo.git
+FLAMESHOT_GIT=https://github.com/flameshot-org/flameshot.git
 
 cd $SRCDIR/builds
 
@@ -116,7 +116,9 @@ mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinirc $HOME/.xinitrc 
 
 #Final steps.
 #Gayming.
-echo "Would tou like to download all of wine's dependencies? (This is mainly for gaming.(You need to enable multilib.))"
+echo "
+
+Would tou like to download all of wine's dependencies? (This is mainly for gaming.(You need to enable multilib.))"
 echo "1)Yes 2)No"
 
 read end
