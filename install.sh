@@ -146,7 +146,7 @@ Applying xinit's configuration."
 if [[ -f "$HOME/.xinitrc" ]]; then
 	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinitrc $HOME/.xinitrc && cd
 else
-	cp $SRCDIR/extras/xinirc $HOME/.xinitrc && cd
+	cp $SRCDIR/extras/xinitrc $HOME/.xinitrc && cd
 fi
 
 
