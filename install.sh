@@ -17,7 +17,7 @@ esac
 
 echo "
 
-applying the custom configurations."
+applying the custom configs."
 SRCDIR="$(pwd)"
 
 DUNST=/etc/dunst
@@ -30,9 +30,9 @@ if [[ ! -d "$SRCDIR/extras" ]]; then
 	run the script inside it's folder." && exit
 fi
 
-#Creating dunst's config folder if it doesn't exist. And applying its configuration.
+#Creating dunst's config folder if it doesn't exist. And applying its config.
 echo "
-Applying dunst's configuration."
+Applying dunst's config."
 if [[ ! -d "$DUNST" ]]; then
         sudo mkdir $DUNST && sudo cp $SRCDIR/extras/dunstrc $DUNST
 else
@@ -41,7 +41,7 @@ fi
 
 #Same as above, but it's sxhkd.
 echo "
-Applying sxhkd's configuration."
+Applying sxhkd's config."
 if [[ ! -d "$SXHKD" ]]; then
 	mkdir $SXHKD && cp $SRCDIR/extras/sxhkdrc $SXHKD
 else
@@ -50,17 +50,18 @@ fi
 
 #Same as above, but it's glava.
 echo "
-Applying glava's configuration."
+Applying glava's config."
 if [[ ! -d "$GLAVA" ]]; then
 	sudo mkdir $GLAVA && sudo cp -r $SRCDIR/extras/glava $GLAVA
 else
 	sudo cp -r $SRCDIR/extras/glava $GLAVA
 fi
 
-#Copying yt-dlp's config to /etc.
+#Copying yt-dlp's config to /etc. And copying picom's config to /etc/xdg.
 echo "
-Applying yt-dlp's configuration." 
-sudo cp $SRCDIR/extras/yt-dlp.conf /etc
+Applying yt-dlp's config." 
+sudo cp $SRCDIR/extras/yt-dlp.conf /etc &&
+sudo cp $SRCDIR/extras/picom.conf /etc/xdg
 
 #appying the themes.
 THEMES=/usr/share/themes
@@ -84,9 +85,9 @@ if [[ ! -d "$ICONS" ]]; then
 	sudo mkdir $ICONS && sudo cp -r $SRCDIR/extras/themes/MB-Plum-Suru-GLOW $ICONS && sudo cp -r $SRCDIR/extras/themes/Sweet-cursors $ICONS
 fi
 
-#Creating the gtk2 configuration folder if it doesn't exist. And applying its configuration.
+#Creating the gtk2 config folder if it doesn't exist. And applying its config.
 echo "
-Applying gtk2's configuration."
+Applying gtk2's config."
 if [[ ! -d "$GTK2" ]]; then
 	sudo mkdir $GTK2 && sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
 else
@@ -95,7 +96,7 @@ fi 	#Have you ever noticed that programmers are people who are just really good 
 
 #Same as above, but it's gtk3.
 echo "
-Applying gtk3's configuration."
+Applying gtk3's config."
 if [[ ! -d "$GTK3" ]]; then
 	sudo mkdir $GTK3 && sudo cp $SRCDIR/extras/themes/settings.ini $GTK3
 else
@@ -142,7 +143,7 @@ cd $SRCDIR/st && sudo make install &&
 
 #Checking if .xinitrc exists. If it does, then it renames it, and applies a new one. 
 echo "
-Applying xinit's configuration."
+Applying xinit's config."
 if [[ -f "$HOME/.xinitrc" ]]; then
 	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinitrc $HOME/.xinitrc && cd
 else
