@@ -61,6 +61,8 @@ fi
 echo "
 Applying yt-dlp's config." 
 sudo cp $SRCDIR/extras/yt-dlp.conf /etc &&
+echo "
+Applying picom's config."
 sudo cp $SRCDIR/extras/picom.conf /etc/xdg
 
 #appying the themes.
