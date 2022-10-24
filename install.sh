@@ -30,7 +30,7 @@ if [[ ! -d "$SRCDIR/extras" ]]; then
 	run the script inside it's folder." && exit
 fi
 
-#Creating dunst's config folder if it doesn't exist. And applying it's configuration.
+#Creating dunst's config folder if it doesn't exist. And applying its configuration.
 echo "
 Applying dunst's configuration."
 if [[ ! -d "$DUNST" ]]; then
@@ -84,7 +84,7 @@ if [[ ! -d "$ICONS" ]]; then
 	sudo mkdir $ICONS && sudo cp -r $SRCDIR/extras/themes/MB-Plum-Suru-GLOW $ICONS && sudo cp -r $SRCDIR/extras/themes/Sweet-cursors $ICONS
 fi
 
-#Creating the gtk2 configuration folder if it doesn't exist. And applying it's configuration.
+#Creating the gtk2 configuration folder if it doesn't exist. And applying its configuration.
 echo "
 Applying gtk2's configuration."
 if [[ ! -d "$GTK2" ]]; then
@@ -111,7 +111,7 @@ mkdir $SRCDIR/builds
 
 NITROGEN_GIT=https://github.com/l3ib/nitrogen.git
 PICOM_GIT=https://github.com/yshui/picom.git
-DUNST_GIT=https://github.com/dunst-project/dunst.git 	#As a programmer. You can put these types of crappy messages anywere. It's soo nice. 
+DUNST_GIT=https://github.com/dunst-project/dunst.git 	#As a programmer. You can put these types of crappy messages anywhere. It's soo nice. 
 SXHKD_GIT=https://github.com/baskerville/sxhkd.git
 XSCT_GIT=https://github.com/X11-good-tools/xsct.git
 BRILLO_GIT=https://github.com/CameronNemo/brillo.git
@@ -130,7 +130,7 @@ elif [[ $DISTRO == 2 ]]; then
 fi
 	
 
-#Compiling dwm, and it's gremlins.
+#Compiling dwm, and its gremlins.
 echo "
 Compiling dwm, slstatus, dmenu and st.
 
@@ -140,7 +140,7 @@ cd $SRCDIR/slstatus && sudo make install &&
 cd $SRCDIR/dmenu && sudo make install &&
 cd $SRCDIR/st && sudo make install &&
 
-#Checking if .xinitrc exists. If it does, then it renames it, and applies it's config. 
+#Checking if .xinitrc exists. If it does, then it renames it, and applies a new one. 
 echo "
 Applying xinit's configuration."
 if [[ -f "$HOME/.xinitrc" ]]; then
@@ -154,7 +154,7 @@ fi
 #Gayming.
 echo "
 
-Would tou like to download all of wine's dependencies? (This is mainly for gaming.(You need to enable multilib.))"
+Would you like to download all of wine's dependencies? (This is mainly for gaming. (You need to enable multilib.))"
 echo "1)Yes 2)No"
 
 read end
@@ -172,7 +172,7 @@ fi
 #"Oh my bash"... The conumdrum... Of life.
 echo "
 
-Would you like to install Oh my bash? (It's the bash shell, but it's more responsive and nicer to use.)"
+Would you like to install Oh my bash? (It's the bash shell, but it's more responsive, and nicer to use.)"
 echo "1)Yes 2)No"
 
 read omb
