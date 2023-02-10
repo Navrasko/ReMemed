@@ -152,20 +152,19 @@ echo "
 Compiling dwm, slstatus, dmenu and st.
 
 "
-cd $SRCDIR/dwm && sudo make install &&
-cd $SRCDIR/slstatus && sudo make install &&
-cd $SRCDIR/dmenu && sudo make install &&
-cd $SRCDIR/st && sudo make install &&
+cd $SRCDIR/dwm && sudo make install
+cd $SRCDIR/slstatus && sudo make install
+cd $SRCDIR/dmenu && sudo make install
+cd $SRCDIR/st && sudo make install
 
 #Checking if .xinitrc exists. If it does, then it renames it, and applies a new one. 
 echo "
 Applying xinit's config."
 if [[ -f "$HOME/.xinitrc" ]]; then
-	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/xinitrc $HOME/.xinitrc && cd
+	mv $HOME/.xinitrc $HOME/.xinitrc-old && cp $SRCDIR/extras/configs/xinitrc $HOME/.xinitrc && cd
 else
-	cp $SRCDIR/extras/xinitrc $HOME/.xinitrc && cd
+	cp $SRCDIR/extras/configs/xinitrc $HOME/.xinitrc && cd
 fi
-
 
 #Final steps.
 #Gayming.
@@ -204,6 +203,3 @@ case $omb in
 		"
 		;;
 esac 				#Perhaps you REALLY should.
-
-echo "
-Ok, but when is despacito 3 going to release?"
