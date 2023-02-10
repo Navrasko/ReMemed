@@ -180,7 +180,7 @@ if [[ $end == 2 ]]; then
 Quite rare." 
 
 elif [[ $end == 1 && $DISTRO == 1 ]]; then
-	bash $SRCDIR/extras/GOOWDH-Void
+	bash $SRCDIR/extras/GOOWDH-Void   #GOOWDH == Get Out Of Wine Dependency Hell 
 
 elif [[ $end == 1 && $DISTRO == 2 ]]; then
 	bash $SRCDIR/extras/GOOWDH-Arch
