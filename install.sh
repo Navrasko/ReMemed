@@ -166,6 +166,7 @@ else
 	cp $SRCDIR/extras/configs/xinitrc $HOME/.xinitrc && cd
 fi
 
+
 #Final steps.
 #Gayming.
 echo "
