@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #xrandr --setprovideroutputsource modesetting NVIDIA-0
-#xrandr --auto
+xrandr --auto
+xrandr --dpi 96
 
 #xsnow -delay 30 -snowflakes 200 -ssnowdepth 100 -wsnowdepth 30 -norudolf -nosanta -notrees &
 #xsnow -delay 30 -snowflakes 200 -nokeepsnowonwindows -nokeepsnowonscreen -norudolf -nosanta -notrees &

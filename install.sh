@@ -5,65 +5,76 @@ echo "Wich distro are you using?
 
 read DISTRO 
 
-#Installing dependencies.
+echo "
+Installing dependencies."
 case $DISTRO in
 	1)
-		sudo xbps-install -S sxhkd picom yt-dlp dunst nitrogen flameshot brillo make cmake gcc xorg-minimal libXft-devel libXcursor-devel libXrandr-devel libXinerama-devel libXfont-devel libXfont2-devel pkg-config glava font-awesome6 font-hack-ttf void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree gtk+ gtk+3 git wget
+		sudo xbps-install -S alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot brillo make cmake gcc psmisc xorg-minimal libXft-devel libXcursor-devel libXrandr-devel libXinerama-devel libXfont-devel libXfont2-devel pkg-config glava font-awesome6 font-hack-ttf void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree gtk+ gtk+3 git wget
 		;;
 	2)
-		sudo pacman -Sy --needed sxhkd picom yt-dlp dunst nitrogen flameshot make cmake gcc xorg pkgconf glava ttf-hack ttf-font-awesome gtk2 gtk3 git wget
+		sudo pacman -Sy --needed alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot make cmake gcc xorg pkgconf glava ttf-hack ttf-font-awesome gtk2 gtk3 git wget
 		;;
 esac
 
 echo "
 
-applying the custom configs."
+Applying the custom configs."
 SRCDIR="$(pwd)"
 
 DUNST=/etc/dunst
 SXHKD=$HOME/.config/sxhkd
 GLAVA=/etc/xdg/glava
+ALARITTY=$HOME/.config/alacritty/alacritty.yml
 
 #Checking for your skill issues. 
 if [[ ! -d "$SRCDIR/extras" ]]; then
 	echo "
-	run the script inside it's folder." && exit
+	run the script inside its folder." && exit
 fi
 
 #Creating dunst's config folder if it doesn't exist. And applying its config.
 echo "
 Applying dunst's config."
 if [[ ! -d "$DUNST" ]]; then
-        sudo mkdir $DUNST && sudo cp $SRCDIR/extras/dunstrc $DUNST
+        sudo mkdir $DUNST && sudo cp $SRCDIR/extras/configs/dunstrc $DUNST
 else
-	sudo cp $SRCDIR/extras/dunstrc $DUNST
+	sudo cp $SRCDIR/extras/configs/dunstrc $DUNST
 fi
 
 #Same as above, but it's sxhkd.
 echo "
 Applying sxhkd's config."
 if [[ ! -d "$SXHKD" ]]; then
-	mkdir $SXHKD && cp $SRCDIR/extras/sxhkdrc $SXHKD
+	mkdir $SXHKD && cp $SRCDIR/extras/configs/sxhkdrc $SXHKD
 else
-	cp $SRCDIR/extras/sxhkdrc $DUNST
+	cp $SRCDIR/extras/configs/sxhkdrc $DUNST
 fi
 
 #Same as above, but it's glava.
 echo "
 Applying glava's config."
-if [[ ! -d "$GLAVA" ]]; then
-	sudo mkdir $GLAVA && sudo cp -r $SRCDIR/extras/glava $GLAVA
+if [[ ! -f "$GLAVA" ]]; then
+	sudo rm -rf $GLAVA && sudo cp -r $SRCDIR/extras/configs/glava $GLAVA
 else
-	sudo cp -r $SRCDIR/extras/glava $GLAVA
+	sudo cp -r $SRCDIR/extras/configs/glava $GLAVA
+fi
+
+#Same as above, but it's alacritty.
+echo "
+Applying alacritys's config."
+if [[ ! -d "$ALACIRTTY" ]]; then
+	sudo mkdir $ALACRITTY && sudo cp -r $SRCDIR/extras/configs/alacritty.yml $ALACRITTY
+else
+	sudo cp -r $SRCDIR/extras/configs/alacritty.yml $ALACRITTY
 fi
 
 #Copying yt-dlp's config to /etc. And copying picom's config to /etc/xdg.
 echo "
 Applying yt-dlp's config." 
-sudo cp $SRCDIR/extras/yt-dlp.conf /etc &&
+sudo cp $SRCDIR/extras/configs/yt-dlp.conf /etc &&
 echo "
 Applying picom's config."
-sudo cp $SRCDIR/extras/picom.conf /etc/xdg
+sudo cp $SRCDIR/extras/configs/picom.conf /etc/xdg
 
 #appying the themes.
 THEMES=/usr/share/themes
@@ -85,6 +96,8 @@ echo "
 Applying icons"
 if [[ ! -d "$ICONS" ]]; then
 	sudo mkdir $ICONS && sudo cp -r $SRCDIR/extras/themes/MB-Plum-Suru-GLOW $ICONS && sudo cp -r $SRCDIR/extras/themes/Sweet-cursors $ICONS
+else
+	sudo cp -r $SRCDIR/extras/themes/MB-Plum-Suru-GLOW $ICONS && sudo cp -r $SRCDIR/extras/themes/Sweet-cursors $ICONS
 fi
 
 #Creating the gtk2 config folder if it doesn't exist. And applying its config.
@@ -114,11 +127,12 @@ mkdir $SRCDIR/builds
 
 NITROGEN_GIT=https://github.com/l3ib/nitrogen.git
 PICOM_GIT=https://github.com/yshui/picom.git
-DUNST_GIT=https://github.com/dunst-project/dunst.git 	#As a programmer. You can put these types of crappy messages anywhere. It's soo nice. 
+DUNST_GIT=https://github.com/dunst-project/dunst.git 
 SXHKD_GIT=https://github.com/baskerville/sxhkd.git
 XSCT_GIT=https://github.com/X11-good-tools/xsct.git
 BRILLO_GIT=https://github.com/CameronNemo/brillo.git
 FLAMESHOT_GIT=https://github.com/flameshot-org/flameshot.git
+ALACRITTY_GIT=https://github.com/alacritty/alacritty
 
 cd $SRCDIR/builds
 
@@ -163,7 +177,7 @@ echo "1)Yes 2)No"
 read end
 if [[ $end == 2 ]]; then
 	echo "
-	Skipping...." #Skipping DEZNUTZ
+Quite rare." 
 
 elif [[ $end == 1 && $DISTRO == 1 ]]; then
 	bash $SRCDIR/extras/GOOWDH-Void
@@ -192,4 +206,4 @@ case $omb in
 esac 				#Perhaps you REALLY should.
 
 echo "
-all done." #Ok, but when is despacito 2 going to release?
+Ok, but when is despacito 3 going to release?"

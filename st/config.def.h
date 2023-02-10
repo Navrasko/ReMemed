@@ -105,18 +105,18 @@ static const char *colorname[] = {
         "#1aa3ff", /* blue */
         "#00ffff", /* aqua */
         "#ff3300", /* orange */
-        "#00ff00", /* lime */
+        "#d966ff", /* lime */
         "#4200ff", /* purpura */
 
         /* 8 bright colors */
-        "#4d4d4d", /* gray */
-        "#ff66ff", /* light purple */
-        "#d966ff", /* light purple2 */
-        "#66c2ff", /* light blue */
-        "#66ffff", /* light aqua */
-        "#ff704d", /* light orange */
-        "#4dff4d", /* light lime */
-        "#7c4dff", /* light purpura */
+        "gray90", /* black */
+        "#cc00cc", /* purple */
+        "#ac00e6", /* purple2 */
+        "#1aa3ff", /* blue */
+        "#00ffff", /* aqua */
+        "#ff3300", /* orange */
+        "#d966ff", /* lime */
+        "#4200ff", /* purpura */
 
 	[255] = 0,
 

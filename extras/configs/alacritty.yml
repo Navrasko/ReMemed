@@ -1,0 +1,32 @@
+window:
+  opacity: 0.8
+
+scrolling:
+  history: 13000
+  multiplier: 4
+
+colors:
+  primary:
+    background: "#000000"
+    foreground: "#cc00cc"
+  normal:
+    black: "#000000"
+    red: "#cc00cc"
+    green: "#ac00e6"
+    yellow: "#1aa3ff"
+    blue: "#00ffff"
+    magenta: "#ff3300"
+    cyan: "#d966ff"
+    white: "#4200ff"
+  bright:
+    black: "#E0E0E0"
+    red: "#cc00cc"
+    green: "#ac00e6"
+    yellow: "#1aa3ff"
+    blue: "#00ffff"
+    magenta: "#ff3300"
+    cyan: "#d966ff"
+    white: "#4200ff"
+
+key_bindings:
+  - { key: Return, mods: Super, action: SpawnNewInstance } 
