@@ -24,12 +24,12 @@ SRCDIR="$(pwd)"
 DUNST=/etc/dunst
 SXHKD=$HOME/.config/sxhkd
 GLAVA=/etc/xdg/glava
-ALARITTY=$HOME/.config/alacritty/alacritty.yml
+ALARITTY=$HOME/.config/alacritty/
 
 #Checking for your skill issues. 
 if [[ ! -d "$SRCDIR/extras" ]]; then
 	echo "
-	run the script inside its folder." && exit
+	Run the script inside its folder." && exit
 fi
 
 #Creating dunst's config folder if it doesn't exist. And applying its config.
@@ -63,9 +63,9 @@ fi
 echo "
 Applying alacritys's config."
 if [[ ! -d "$ALACIRTTY" ]]; then
-	sudo mkdir $ALACRITTY && sudo cp -r $SRCDIR/extras/configs/alacritty.yml $ALACRITTY
+	sudo mkdir $ALACRITTY && sudo cp $SRCDIR/extras/configs/alacritty.yml $ALACRITTY
 else
-	sudo cp -r $SRCDIR/extras/configs/alacritty.yml $ALACRITTY
+	sudo cp $SRCDIR/extras/configs/alacritty.yml $ALACRITTY
 fi
 
 #Copying yt-dlp's config to /etc. And copying picom's config to /etc/xdg.
