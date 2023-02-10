@@ -37,7 +37,7 @@
 #request setopacity "none"
 
 /* Whether to mirror left and right audio input channels from PulseAudio.*/
-#request setmirror false 
+#request setmirror false
 
 /* OpenGL context and GLSL shader versions, do not change unless
    you *absolutely* know what you are doing. */
@@ -48,8 +48,8 @@
 #request settitle "GLava"
 
 /* Window geometry (x, y, width, height) */
-#request setgeometry 0 0 800 600
-
+#request setgeometry 0 0 1366 100
+/* Window backg
 /* Window background color (RGB format).
    Does not work with `setopacity "xroot"` */
 #request setbg 00000000
@@ -131,7 +131,7 @@
 
 /* Frame limiter, set to the frames per second (FPS) desired or
    simply set to zero (or lower) to disable the frame limiter. */
-#request setframerate 60 
+#request setframerate 60
 
 /* Suspends rendering if a fullscreen window is focused while
    GLava is still visible (ie. on another monitor). This prevents
@@ -140,7 +140,7 @@
 
    If GLava is minimized or completely obscured, it will not
    render regardless of this option. */
-#request setfullscreencheck true 
+#request setfullscreencheck false
 
 /* Enable/disable printing framerate every second. 'FPS' stands
    for 'Frames Per Second', and 'UPS' stands for 'Updates Per
