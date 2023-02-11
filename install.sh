@@ -9,10 +9,10 @@ echo "
 Installing dependencies."
 case $DISTRO in
 	1)
-		sudo xbps-install -S alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot brillo make cmake gcc psmisc xorg-minimal libXft-devel libXcursor-devel libXrandr-devel libXinerama-devel libXfont-devel libXfont2-devel pkg-config glava font-awesome6 font-hack-ttf void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree gtk+ gtk+3 git wget
+		sudo xbps-install -S alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot brillo lxappearance make cmake gcc psmisc xorg-minimal libXft-devel libXcursor-devel libXrandr-devel libXinerama-devel libXfont-devel libXfont2-devel pkg-config glava font-awesome6 font-hack-ttf void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree gtk+ gtk+3 git wget
 		;;
 	2)
-		sudo pacman -Sy --needed alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot make cmake gcc xorg pkgconf glava ttf-hack ttf-font-awesome gtk2 gtk3 git wget
+		sudo pacman -Sy --needed alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot lxappearance make cmake gcc xorg pkgconf glava ttf-hack ttf-font-awesome gtk2 gtk3 git wget
 		;;
 esac
 
