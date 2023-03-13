@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Wich distro are you using? 
+echo "Distro? 
 1)Void	2)Arch"
 
 read DISTRO 
