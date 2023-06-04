@@ -9,10 +9,10 @@ echo "
 Installing dependencies."
 case $DISTRO in
 	1)
-		sudo xbps-install -S alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot brillo lxappearance make cmake gcc psmisc xorg-minimal libXft-devel libXcursor-devel libXrandr-devel libXinerama-devel libXfont-devel libXfont2-devel pkg-config glava font-awesome6 font-hack-ttf void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree gtk+ gtk+3 git wget
+		sudo xbps-install -S alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot brillo lxappearance make cmake gcc psmisc xorg-minimal libXft-devel libXcursor-devel libXrandr-devel libXinerama-devel libXfont-devel libXfont2-devel pkg-config glava font-awesome6 font-hack-ttf void-repo-multilib void-repo-nonfree void-repo-multilib-nonfree gtk+ gtk+3 git wget -y
 		;;
 	2)
-		sudo pacman -Sy --needed alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot lxappearance make cmake gcc xorg pkgconf glava ttf-hack ttf-font-awesome gtk2 gtk3 git wget
+		sudo pacman -Sy --needed alacritty dbus xrandr sxhkd picom yt-dlp dunst nitrogen flameshot lxappearance make cmake gcc xorg-devel pkgconf glava ttf-hack ttf-font-awesome gtk2 gtk3 git wget --noconfirm
 		;;
 esac
 
@@ -42,8 +42,7 @@ else
 fi
 
 #Same as above, but it's sxhkd.
-echo "
-Applying sxhkd's config."
+echo "Applying sxhkd's config."
 if [[ ! -d "$SXHKD" ]]; then
 	mkdir $SXHKD && cp $SRCDIR/extras/configs/sxhkdrc $SXHKD
 else
@@ -51,8 +50,7 @@ else
 fi
 
 #Same as above, but it's glava.
-echo "
-Applying glava's config."
+echo "Applying glava's config."
 if [[ ! -f "$GLAVA" ]]; then
 	sudo rm -rf $GLAVA && sudo cp -r $SRCDIR/extras/configs/glava $GLAVA
 else
@@ -60,8 +58,7 @@ else
 fi
 
 #Same as above, but it's alacritty.
-echo "
-Applying alacritys's config."
+echo "Applying alacritys's config."
 if [[ ! -d "$ALACIRTTY" ]]; then
 	sudo mkdir $ALACRITTY && sudo cp $SRCDIR/extras/configs/alacritty.yml $ALACRITTY
 else
@@ -69,11 +66,9 @@ else
 fi
 
 #Copying yt-dlp's config to /etc. And copying picom's config to /etc/xdg.
-echo "
-Applying yt-dlp's config." 
+echo "Applying yt-dlp's config." 
 sudo cp $SRCDIR/extras/configs/yt-dlp.conf /etc &&
-echo "
-Applying picom's config."
+echo "Applying picom's config."
 sudo cp $SRCDIR/extras/configs/picom.conf /etc/xdg/picom.conf
 
 #appying the themes.
@@ -84,6 +79,7 @@ GTK3=/etc/gtk-3.0
 
 #Creating the themes folder if it doesn't exist. And applying the themes.
 echo "
+
 Applying themes."
 if [[ ! -d "$THEMES" || ! -d "$THEMES/Default" ]]; then
 	sudo mkdir $THEMES && sudo mkdir $THEMES/Default && sudo cp -r $SRCDIR/extras/themes/Sweet-Dark-v40 $THEMES && sudo cp -r $SRCDIR/extras/themes/index.theme $THEMES/Default
@@ -92,8 +88,7 @@ else
 fi
 
 #Same as above, but these are icons instead of themes. 
-echo "
-Applying icons"
+echo "Applying icons"
 if [[ ! -d "$ICONS" ]]; then
 	sudo mkdir $ICONS && sudo cp -r $SRCDIR/extras/themes/MB-Plum-Suru-GLOW $ICONS && sudo cp -r $SRCDIR/extras/themes/Sweet-cursors $ICONS
 else
@@ -101,8 +96,7 @@ else
 fi
 
 #Creating the gtk2 config folder if it doesn't exist. And applying its config.
-echo "
-Applying gtk2's config."
+echo "Applying gtk2's config."
 if [[ ! -d "$GTK2" ]]; then
 	sudo mkdir $GTK2 && sudo cp $SRCDIR/extras/themes/gtkrc $GTK2
 else
@@ -110,8 +104,7 @@ else
 fi 	#Have you ever noticed that programmers are people who are just really good at grammar? Like. Pro... Grammar... Get it?
 
 #Same as above, but it's gtk3.
-echo "
-Applying gtk3's config."
+echo "Applying gtk3's config."
 if [[ ! -d "$GTK3" ]]; then
 	sudo mkdir $GTK3 && sudo cp $SRCDIR/extras/themes/settings.ini $GTK3
 else
@@ -168,7 +161,6 @@ fi
 
 
 #Final steps.
-#Gayming.
 echo "
 
 Would you like to download all of wine's dependencies? (This is mainly for gaming. (You need to enable multilib.))"
@@ -177,7 +169,7 @@ echo "1)Yes 2)No"
 read end
 if [[ $end == 2 ]]; then
 	echo "
-Quite rare." 
+Good to know." 
 
 elif [[ $end == 1 && $DISTRO == 1 ]]; then
 	bash $SRCDIR/extras/GOOWDH-Void   #GOOWDH == Get Out Of Wine Dependency Hell 
@@ -186,7 +178,6 @@ elif [[ $end == 1 && $DISTRO == 2 ]]; then
 	bash $SRCDIR/extras/GOOWDH-Arch
 fi
 
-#"Oh my bash"... The conumdrum... Of life.
 echo "
 
 Would you like to install Oh my bash? (It's the bash shell, but it's more responsive, and nicer to use.)"
