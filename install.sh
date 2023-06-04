@@ -74,7 +74,7 @@ Applying yt-dlp's config."
 sudo cp $SRCDIR/extras/configs/yt-dlp.conf /etc &&
 echo "
 Applying picom's config."
-sudo cp $SRCDIR/extras/configs/picom.conf /etc/xdg
+sudo cp $SRCDIR/extras/configs/picom.conf /etc/xdg/picom.conf
 
 #appying the themes.
 THEMES=/usr/share/themes
